@@ -23,7 +23,7 @@ services:
     build: ./uns
     restart: always
     ports:
-      - "8050:8050"
+      - "8050:3000"
     depends_on:
       db:
         condition: service_healthy

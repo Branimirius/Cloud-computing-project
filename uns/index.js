@@ -6,11 +6,11 @@ const app = express();
 app.use(bodyParser.json());
 
 const client = new Client({
-  host: 'hostname',
+  host: 'postgres',
   port: 5432,
-  user: 'username',
-  password: 'password',
-  database: 'dbname'
+  user: 'postgres',
+  password: 'ftn',
+  database: 'uns'
 });
 client.connect();
 
