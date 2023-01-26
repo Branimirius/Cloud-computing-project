@@ -29,8 +29,8 @@ def student_to_uns(form):
         'first_name': form.cleaned_data['first_name'],
         'last_name': form.cleaned_data['last_name']
     }
-    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-    response = requests.post(url, data=json.dumps(data), headers=headers)
+    headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
+    response = requests.post(url, json=data, headers=headers)
     if response.status_code == 201:
         return True
     return False

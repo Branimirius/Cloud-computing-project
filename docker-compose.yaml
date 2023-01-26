@@ -1,11 +1,37 @@
-version: "3.7"
+version: '3.8'
 services:
-  db:
-    image: postgres
+  
+  ftn:
+    build: ./ftn
+    ports:
+      - "8000:8000"
+  
+  pmf:
+    build: ./ftn
+    ports:
+      - "8001:8001"
+      
+  pravni:
+    build: ./ftn
+    ports:
+      - "8002:8002"
+
+  uns:
+    build: ./uns
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+        
+               
+  postgres:
+    image: postgres:latest
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ftn
-      POSTGRES_DB: uns
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres_pass
+      - POSTGRES_DB=uns_db
     ports:
       - "5432:5432"
     healthcheck:
@@ -13,33 +39,3 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
-  ftn:
-    build: ./ftn
-    environment:
-      NAME: ftn
-    ports:
-      - "8060:8060"
-      
-  pmf:
-    build: ./ftn
-    environment:
-      NAME: pmf
-    ports:
-      - "8070:8060"
-  
-  pravni:
-    build: ./ftn
-    environment:
-      NAME: pravni
-    ports:
-      - "8090:8060"
-
-  uns:
-    build: ./uns
-    restart: always
-    ports:
-      - "8050:3000"
-    depends_on:
-      db:
-        condition: service_healthy
