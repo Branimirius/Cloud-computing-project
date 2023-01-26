@@ -23,7 +23,7 @@ def student_registration(request):
     return render(request, 'student_registration.html', {'form': form})
 
 def student_to_uns(form):
-    url = 'http://localhost:3000/student'
+    url = 'http://uns:3000/student'
     data = {
         'email': form.cleaned_data['email'],
         'first_name': form.cleaned_data['first_name'],

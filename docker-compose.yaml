@@ -9,12 +9,12 @@ services:
   pmf:
     build: ./ftn
     ports:
-      - "8001:8001"
+      - "8001:8000"
       
   pravni:
     build: ./ftn
     ports:
-      - "8002:8002"
+      - "8002:8000"
 
   uns:
     build: ./uns
