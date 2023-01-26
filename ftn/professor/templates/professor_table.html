@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>FTN Studentska sluzba</h1>
+<h2>Lista svih profesora</h2>
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for professor in professors %}
+            <tr>
+                <td>{{ professor.first_name }}</td>
+                <td>{{ professor.last_name }}</td>
+                <td>{{ professor.email }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</form>
+
+<a href="/professor/register">Register</a>
+
+</body>
+</html>
