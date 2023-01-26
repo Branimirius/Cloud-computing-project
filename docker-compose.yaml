@@ -16,8 +16,24 @@ services:
 
   ftn:
     build: ./ftn
+    environment:
+      NAME: ftn
     ports:
       - "8060:8060"
+      
+  pmf:
+    build: ./ftn
+    environment:
+      NAME: pmf
+    ports:
+      - "8070:8060"
+  
+  pravni:
+    build: ./ftn
+    environment:
+      NAME: pravni
+    ports:
+      - "8090:8060"
 
   uns:
     build: ./uns
